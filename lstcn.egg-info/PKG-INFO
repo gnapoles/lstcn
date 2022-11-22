@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: lstcn
+Version: 0.1.0
+Summary: Long short-term cognitive network
+Home-page: https://github.com/shuds13/pyexample
+Author: Gonzalo Napoles
+Author-email: g.r.napoles@uvt.nl
+License: Apache License 2.0
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.8

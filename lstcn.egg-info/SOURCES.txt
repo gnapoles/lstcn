@@ -1,0 +1,10 @@
+README.md
+setup.py
+lstcn/LSTCN.py
+lstcn/STCN.py
+lstcn/__init__.py
+lstcn.egg-info/PKG-INFO
+lstcn.egg-info/SOURCES.txt
+lstcn.egg-info/dependency_links.txt
+lstcn.egg-info/requires.txt
+lstcn.egg-info/top_level.txt
