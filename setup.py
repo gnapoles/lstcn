@@ -7,7 +7,7 @@ setup(
     long_description="Long Short-term Cognitive Networks (LSTCNs) are a type of recurrent neural network for time series forecasting. "
     + "LSTCNs use a fast learning algorithm supporting univariate and multivariate time series.",
     url='https://github.com/gnapoles/lstcn',
-    author='Gonzalo Napoles',
+    author='Gonzalo Nápoles',
     author_email='g.r.napoles@uvt.nl',
     license='Apache License 2.0',
     packages=['lstcn'],
