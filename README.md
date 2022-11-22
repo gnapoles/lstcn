@@ -13,7 +13,7 @@ pip install lstcn
 ## Background
 
 <p align="center">
-  <img src="https://github.com/gnapoles/lstcn/blob/93afdfd9dbedf89edc45b87bbba86477e80c1554/figures/LSTCN.pdf" width="800" />
+  <img src="https://github.com/gnapoles/lstcn/blob/93afdfd9dbedf89edc45b87bbba86477e80c1554/figures/LSTCN.pdf?raw=true" width="800" />
 </p>
 
 ## Example Usage
