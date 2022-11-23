@@ -48,13 +48,13 @@ where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ is a column vector fil
 
 ### References
 
-Theory papers:
+If you use the LSTCN model in your research please cite the following papers:
 
 [1] Nápoles, G., Grau, I., Jastrzębska, A., & Salgueiro, Y. (2022). Long short-term cognitive networks. Neural Computing and Applications, 1-13.(https://link.springer.com/article/10.1007/s00521-022-07348-5)
 
 [2] Nápoles, G., Vanhoenshoven, F., & Vanhoof, K. (2019). Short-term cognitive networks, flexible reasoning and nonsynaptic learning. Neural Networks, 115, 72-81. (https://www.sciencedirect.com/science/article/abs/pii/S0893608019300930)
 
-Application papers:
+Some application papers with nice examples and further explanations:
 
 [3] Morales-Hernández, A., Nápoles, G., Jastrzebska, A., Salgueiro, Y., & Vanhoof, K. (2022). Online learning of windmill time series using Long Short-term Cognitive Networks. Expert Systems with Applications, 117721. (https://www.sciencedirect.com/science/article/pii/S0957417422010065)
 
