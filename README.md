@@ -10,6 +10,10 @@ LSTCN can be installed from [PyPI](https://pypi.org/project/lstcn):
 pip install lstcn
 </pre>
 
+## Example Usage
+
+
+
 ## Background
 
 An LSTCN model [1] is a recurrent neural network composed of a collection of Short-term Cognitive Network (STCN) blocks [2]. Each STCN block is a two-layer neural network that implements shallow learning to process an specific time patch. The time patches can be defined as temporal pieces of data resulting from partitioning the time series. Let's assume that $X \in \mathbb{R}^{M \times T}$ is a dataset comprising a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances in a given time patch, $M$ is the number of variable and $L$ is the number of steps to forecast. Each STCN block passes the knowledge learned in the previous iteration to the next STCN model as prior knowledge defined by a weight matrix:
@@ -41,10 +45,6 @@ B_2^{(k)}
 ```
 
 where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ is a column vector filled with ones, $\Omega^{(k)}$ denotes the diagonal matrix of $(\Phi^{(k)})^{\top} \Phi^{(k)}$, while $\lambda \geq 0$ denotes the ridge regularization penalty. This deterministic learning rule assumes that the neuron's activation values inner layer are standardized. If needed, the predicted values can be adjusted back into their original scale.
-
-## Example Usage
-
-
 
 ### References
 [1] Nápoles, G., Grau, I., Jastrzębska, A., & Salgueiro, Y. (2022). Long short-term cognitive networks. Neural Computing and Applications, 1-13.(https://link.springer.com/article/10.1007/s00521-022-07348-5)
