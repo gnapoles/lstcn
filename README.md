@@ -12,9 +12,13 @@ pip install lstcn
 
 ## Background
 
+An LSTCN model [1] is a recurrent neural network composed of a collection of Short-term Cognitive Network (STCN) blocks. Each STCN block is a two-layer neural network that implements shallow learning to process an specific time patch. The time patches can be defined as temporal pieces of data resulting from partitioning the time series. Let's assume that $X \in \mathbb{R}^{M \times T}$ is a dataset comprising a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances in a given time patch, $M$ is the number of vairables and $L$ is the number of steps to forecast. Each STCN block passes the knowledge learned in the previous iteration to the next STCN model as prior knowledge defined by a weight matrix:
+
 <p align="center">
   <img src="https://github.com/gnapoles/lstcn/blob/390b3ba84200e0bc58524e87138db4f45ac8f591/figures/LSTCN_diagram.jpg?raw=true" width="800" />
 </p>
+
+
 
 ```math
 Y^{(k)}=H^{(k)} W_2^{(k)} \oplus B_2^{(k)}
