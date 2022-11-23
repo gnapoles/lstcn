@@ -1,5 +1,0 @@
-hampel
-numpy
-scipy
-scikit-learn
-pandas
