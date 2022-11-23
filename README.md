@@ -1,6 +1,6 @@
 # Long Short-term Cognitive Networks
 
-The Long Short-term Cognitive Network (LSTCN) model [1] is a computationally efficient recurrent neural network devoted to time series forecasting. It supports one-step ahead and multiple-step ahead forecasting for univariate and multivariate time series. However, this model is highly recommended for multivariate settings and multiple-step ahead forecasting. The LSTCN model is competitive compared to state-of-the-art recurrent neural networks in terms of forecasting error while being much faster.
+The Long Short-term Cognitive Network (LSTCN) model [1] is a computationally efficient recurrent neural network devoted to time series forecasting. It supports one-step ahead and multiple-step-ahead forecasting for univariate and multivariate time series. However, this model is highly recommended for multivariate settings and multiple-step-ahead forecasting. The LSTCN model is competitive compared to state-of-the-art recurrent neural networks in terms of forecasting error while being much faster.
 
 ## Install
 
