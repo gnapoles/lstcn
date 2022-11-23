@@ -25,7 +25,7 @@ H^{(k)}=f\left(X^{(k)} W_1^{(k)} \oplus B_1^{(k)} \right)
 ```
 
 ```math
-Y^{(k)}=f\left(H^{(k)} W_2^{(k)} \oplus B_2^{(k)} \right)
+\hat{Y}^{(k)}=f\left(H^{(k)} W_2^{(k)} \oplus B_2^{(k)} \right)
 ```
 
 ```math
