@@ -30,9 +30,7 @@ H^{(k)}=f\left(X^{(k)} W_1^{(k)} \oplus B_1^{(k)} \right)
 
 where $\hat{Y}^{(k)}$ is the predicted output, while $\oplus$ performs a matrix-vector addition by operating each row of a given matrix with a vector.
 
-Similar to other gated recurrent neural networks, the learning process used by LSTCN models takes place inside each STCN block, considering the frozen weights input as prior knowledge.
-
-Overall, the learning task can be summarized as follows. Given a temporal state $H^{(k)}$ resulting from the input gate and the block's expected output $Y^{(k)}$, we need to compute the matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$. These matrices are estimated using a deterministic learning rule solving this regression problem:
+Similar to other gated recurrent neural networks, the learning process used by LSTCN models takes place inside each STCN block, considering the frozen weights input as prior knowledge. Given a temporal state $H^{(k)}$ resulting from the input gate and the block's expected output $Y^{(k)}$, we need to compute the matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$. These matrices are estimated using a deterministic learning rule solving this regression problem:
 
 ```math
 \begin{bmatrix} 
