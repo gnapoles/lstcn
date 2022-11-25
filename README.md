@@ -48,11 +48,13 @@ The syntax for the usage of LSTCN is similar to the one of scikit-learn library.
 
 ### Training and cross-validation
 
-First create a LSTCN object specifying the number of features and the number of steps to predict ahead:
+First create an LSTCN object specifying the number of features and the number of steps to predict ahead:
 
 ```python
 model = LSTCN(n_features, n_steps)
 ```
+
+Optionally, you can also specify in the number of STCN blocks in the network, the activation function, the regression solver and the regularization penalization parameter. For more details check the documentation of the LSTCN class.
 
 For training a LSTCN model simply call the fit method:
 
