@@ -5,3 +5,4 @@ examples/.ipynb_checkpoints
 .idea
 dist
 lstcn.egg-info
+/figures/LSTCN diagram.pptx

@@ -11,7 +11,7 @@ class LSTCN(MultiOutputMixin, BaseEstimator):
     """
 
     def __init__(self, n_features,
-                 n_steps, n_blocks=5, function='clip', solver='svd', alpha=1e-2, ):
+                 n_steps, n_blocks=5, function='hyperbolic', solver='svd', alpha=1e-2):
 
         """
 
@@ -20,13 +20,12 @@ class LSTCN(MultiOutputMixin, BaseEstimator):
         n_features    :  {int} Number of features in the time series.
         n_steps       :  {int} Number of steps-ahead to be forecast.
         n_blocks      :  {int} Number of STCN blocks in the network.
-        function      :  {String} Activation function ('sigmoid', 'tanh', 'clip')
+        function      :  {String} Activation function ('sigmoid', 'hyperbolic')
         solver        :  {String} Regression solver ('svd', 'cholesky', 'lsqr')
         alpha         :  {float} Positive penalization for regularization.
 
         """
 
-        self.stcn = None
         self.n_steps = n_steps
         self.n_blocks = n_blocks
         self.n_features = n_features
@@ -34,6 +33,10 @@ class LSTCN(MultiOutputMixin, BaseEstimator):
         self.function = function
         self.solver = solver
         self.alpha = alpha
+
+        self.stcn = None
+        self.min = None
+        self.max = None
 
     def fit(self, X_train, Y_train):
 
@@ -52,6 +55,9 @@ class LSTCN(MultiOutputMixin, BaseEstimator):
         """
 
         errors = []
+
+        self.min = np.amin(Y_train)
+        self.max = np.amax(Y_train)
 
         # the number of instances must be divisible by n_blocks
         if X_train.shape[0] % self.n_blocks != 0:
@@ -98,6 +104,7 @@ class LSTCN(MultiOutputMixin, BaseEstimator):
                   The prediction for the input data.
 
         """
+
         return self.stcn.predict(X_test)
 
     def score(self, Y_pred, Y_true):

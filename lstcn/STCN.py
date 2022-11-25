@@ -9,7 +9,7 @@ class STCN(MultiOutputMixin, BaseEstimator):
 
     """
 
-    def __init__(self, W1=None, W2=None, function='clip', solver='svd', alpha=1e-2):
+    def __init__(self, W1=None, W2=None, function='hyperbolic', solver='svd', alpha=1e-2):
 
         """
 
@@ -19,7 +19,7 @@ class STCN(MultiOutputMixin, BaseEstimator):
                       Non-learnable weight matrix used as prior knowledge.
         W2        :  {array-like} of shape (n_features*n_steps+1, n_features*n_steps)
                       Weight matrix to be learned from a given time patch.
-        function  :  {String} Activation function ('sigmoid', 'tanh', 'clip')
+        function  :  {String} Activation function ('sigmoid', 'hyperbolic')
         solver    :  {String} Regression solver ('svd', 'cholesky', 'lsqr')
         alpha :      {float} Positive penalization for L2-regularization.
 
@@ -32,7 +32,7 @@ class STCN(MultiOutputMixin, BaseEstimator):
         self.alpha = alpha
         self.solver = solver
 
-    def transfer(self, X):
+    def transform(self, X):
 
         """ Apply tha activation function to the hidden state.
 
@@ -47,16 +47,34 @@ class STCN(MultiOutputMixin, BaseEstimator):
 
         """
 
-        if self.function == 'tanh':
+        if self.function == 'hyperbolic':
             return np.tanh(X)
         elif self.function == 'sigmoid':
             return 1.0 / (1.0 + np.exp(-X))
-        elif self.function == 'clip':
-            # upper bound
-            X[X > X.shape[1]] = X.shape[1]
-            # lower bound
-            X[X < -X.shape[1]] = -X.shape[1]
-            return X
+
+    def inverse(self, Y):
+
+        """ Compute the inverse of the activation function.
+
+        Parameters
+        ----------
+        Y : {array-like} of shape (n_samples, n_features*n_steps)
+            The values to be transformed with the inverse.
+        Returns
+        ----------
+        X : {array-like} of shape (n_samples, n_features*n_steps)
+            The inverse values of Y for the current activation function.
+        Issues
+        ----------
+        Sigmoid    : The values of Y must be in the (0,1) interval.
+        Hyperbolic : The values of Y must be in the (-1,1) interval.
+
+        """
+
+        if self.function == 'hyperbolic':
+            return np.arctanh(Y)
+        elif self.function == 'sigmoid':
+            return np.log(Y / (1 - Y))
 
     def fit(self, X_train, Y_train):
 
@@ -75,10 +93,10 @@ class STCN(MultiOutputMixin, BaseEstimator):
         """
 
         # combine the input data with the first set of weights
-        H = self.transfer(np.matmul(self.add_bias(X_train), self.W1))
+        H = self.transform(np.matmul(self.add_bias(X_train), self.W1))
 
         # compute W2 and B2 using a regularized regression model
-        reg = Ridge(alpha=self.alpha, solver=self.solver, random_state=42).fit(H, Y_train)
+        reg = Ridge(alpha=self.alpha, solver=self.solver, random_state=42).fit(H, self.inverse(Y_train))
         self.W2 = np.transpose(np.c_[reg.coef_, reg.intercept_])
 
         return self
@@ -99,10 +117,10 @@ class STCN(MultiOutputMixin, BaseEstimator):
         """
 
         # combine the input data with the first set of weights
-        H = self.transfer(np.matmul(self.add_bias(X), self.W1))
+        H = self.transform(np.matmul(self.add_bias(X), self.W1))
 
         # multiply the current state times the second weight matrix
-        return np.matmul(self.add_bias(H), self.W2)
+        return self.transform(np.matmul(self.add_bias(H), self.W2))
 
     def add_bias(self, X):
 
