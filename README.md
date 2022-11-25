@@ -40,7 +40,7 @@ B_2^{(k)}
 = \left( \left( \Phi^{(k)} \right)^{\top} \Phi^{(k)} + \lambda \Omega^{(k)} \right)^{-1} \left( \Phi^{(k)} \right)^{\top} f^{-1}(Y^{(k)})
 ```
 
-where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ denotes a column vector filled with ones, $\Omega^{(k)}$ denotes the diagonal matrix of $(\Phi^{(k)})^{\top} \Phi^{(k)}$, while $\lambda \geq 0$ denotes the ridge regularization penalty. This deterministic learning rule assumes that the neuron's activation values in the inner layer are standardized. If needed, the predicted values can be adjusted back into their original scale.
+where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ denotes a column vector filled with ones, $\Omega^{(k)}$ denotes the diagonal matrix of $(\Phi^{(k)})^{\top} \Phi^{(k)}$, while $\lambda \geq 0$ denotes the ridge regularization penalty. This deterministic learning rule assumes that the neuron's activation values in the inner layer are standardized.
 
 ## Example Usage
 
