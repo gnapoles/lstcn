@@ -12,9 +12,9 @@ pip install lstcn
 
 ## Background
 
-An LSTCN model [1] can be defined as a recurrent neural network composed of a collection of sequentially-ordered Short-term Cognitive Network (STCN) blocks [2]. Each STCN block is a two-layer neural network that implements shallow learning to process a specific time patch. The time patches can be defined as temporal pieces of data resulting from partitioning the time series. In this model, the first layer involves frozen knowledge, while the second contains learnable weights.  
+An LSTCN model [1] can be defined as a recurrent neural network composed of sequentially-ordered Short-term Cognitive Network (STCN) blocks [2]. Each STCN block is a two-layer neural network that implements shallow learning to fit the model to a specific time patch, which is then transfered to the following block. Time patches are temporal pieces of data resulting from partitioning the time series. 
 
-Let us assume that $X \in \mathbb{R}^{M \times T}$ is a dataset comprising a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances in a given time patch, $M$ is the number of variable and $L$ is the number of steps to forecast. Each STCN block passes the knowledge learned in the previous iteration ( $W_2^{(k)}$ and $B_2^{(k)}$) to the next STCN model as prior knowledge to perform reasoning. The figure below illustrates this idea.
+Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances in a given time patch, $M$ is the number of variable and $L$ is the number of steps to forecast. Each STCN block passes the knowledge learned in the previous iteration ( $W_2^{(k)}$ and $B_2^{(k)}$) to the next STCN model as prior knowledge to perform reasoning. The figure below illustrates this idea.
 
 <p align="center">
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="800" />
@@ -88,12 +88,6 @@ For predicting new data use the method predict:
 Y_pred = best_model.predict(X_test)
 ```
 
-For example, this is the prediction for the target series `oil temperature` of the `ETTh1` dataset [5] containing electricity transformer temperatures in China:
-
-<p align="center">
-  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="800" />
-</p>
-
 ## References
 
 If you use the LSTCN model in your research please cite the following papers:
@@ -107,7 +101,3 @@ Some application papers with nice examples and further explanations:
 [3] Morales-Hernández, A., Nápoles, G., Jastrzebska, A., Salgueiro, Y., & Vanhoof, K. (2022). Online learning of windmill time series using Long Short-term Cognitive Networks. Expert Systems with Applications, 117721. [paper](https://www.sciencedirect.com/science/article/pii/S0957417422010065) [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:zw7eSIZeni8J:scholar.google.com/&output=citation&scisdr=CgXfrbsrEOqYxeaDLaY:AAGBfm0AAAAAY32FNaZ4Y4UCT9Pi0MyrcnXkbVr9ZKQK&scisig=AAGBfm0AAAAAY32FNS8iIT36tfp463gOvpckF52eUHpt&scisf=4&ct=citation&cd=-1&hl=en)
 
 [4] Grau, I., de Hoop, M., Glaser, A., Nápoles, G., & Dijkman, R. (2022). Semiconductor Demand Forecasting using Long Short-term Cognitive Networks. In Proceedings of the 34th Benelux Conference on Artificial Intelligence and 31st Belgian-Dutch Conference on Machine Learning, BNAIC/BeNeLearn 2022. [paper](https://bnaic2022.uantwerpen.be/wp-content/uploads/BNAICBeNeLearn_2022_submission_4148.pdf) [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:d8vQmLWkfxoJ:scholar.google.com/&output=citation&scisdr=CgXfrbsrEOqYxeaDRPY:AAGBfm0AAAAAY32FXPaTi5GsMnukoQWrf0Om83a-J6W6&scisig=AAGBfm0AAAAAY32FXC9uZn6HZlt2vf6hQPhocM_e53y2&scisf=4&ct=citation&cd=-1&hl=en)
-
-Dataset used in the example:
-
-[5] Zhou, H., Zhang, S., Peng, J., Zhang, S., Li, J., Xiong, H., & Zhang, W. (2021, May). Informer: Beyond efficient transformer for long sequence time-series forecasting. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 12, pp. 11106-11115). [paper](https://ojs.aaai.org/index.php/AAAI/article/view/17325) [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:VigqltkXN1QJ:scholar.google.com/&output=citation&scisdr=CgXfrbsrEPaI6B_rEX0:AAGBfm0AAAAAY4PtCX1Nw5q5QeLUSLGippUjAq9GB4dc&scisig=AAGBfm0AAAAAY4PtCStnIoFzxpsoHCwvNsGMCy_qkZUZ&scisf=4&ct=citation&cd=-1&hl=en)
