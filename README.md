@@ -46,7 +46,7 @@ where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ denotes a column vecto
 
 The syntax for the usage of LSTCN is similar to the one of scikit-learn library.
 
-### Training and cross-validation
+### Training
 
 First create an LSTCN object specifying the number of features and the number of steps to predict ahead:
 
@@ -61,6 +61,8 @@ For training a LSTCN model simply call the fit method:
 ```python
 model.fit(X,Y)
 ```
+
+### Hyperparameter tuning
 
 Use walk forward cross-validation and grid search (or any suitable validation strategy from scikit-learn) for selecting the best model:
 
@@ -77,6 +79,8 @@ gsearch = GridSearchCV(estimator=model, cv=tscv, param_grid=param_search, refit=
 gsearch.fit(X_train, Y_train)
 best_model = gsearch.best_estimator_
 ```
+
+### Prediction
 
 For predicting new data use the method predict:
 
