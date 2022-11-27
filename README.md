@@ -54,7 +54,7 @@ First create an LSTCN object specifying the number of features and the number of
 model = LSTCN(n_features, n_steps)
 ```
 
-Optionally, you can also specify in the number of STCN blocks in the network, the activation function, the regression solver and the regularization penalization parameter. For more details check the documentation of the LSTCN class.
+Optionally, you can also specify the number of STCN blocks in the network (`n_blocks`), the activation function (`function`), the regression solver (`solver`) and the regularization penalization parameter (`alpha`). For more details check the documentation of the LSTCN class.
 
 For training a LSTCN model simply call the fit method:
 
@@ -67,6 +67,11 @@ Use walk forward cross-validation and grid search (or any suitable validation st
 ```python
 tscv = TimeSeriesSplit(n_splits=5)
 scorer = make_scorer(model.score, greater_is_better=False)
+param_search = {
+    'alpha': [1.0E-4, 1.0E-2, 1.0, 1.0E+2, 1.0E+4],
+    'n_blocks': range(2, 6)
+}
+
 gsearch = GridSearchCV(estimator=model, cv=tscv, param_grid=param_search, refit=True,
                        n_jobs=-1, error_score='raise', scoring=scorer)
 gsearch.fit(X_train, Y_train)
