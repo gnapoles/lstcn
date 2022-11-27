@@ -91,7 +91,7 @@ Y_pred = best_model.predict(X_test)
 For example, this is the prediction for the target series `oil temperature` of the `ETTh1` dataset [5] containing electricity transformer temperatures in China:
 
 <p align="center">
-  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="800" />
+  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1000" />
 </p>
 
 ## References
@@ -110,4 +110,4 @@ Some application papers with nice examples and further explanations:
 
 Dataset used in the example:
 
-[5] Zhou, H., Zhang, S., Peng, J., Zhang, S., Li, J., Xiong, H., & Zhang, W. (2021, May). Informer: Beyond efficient transformer for long sequence time-series forecasting. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 12, pp. 11106-11115). [paper](https://ojs.aaai.org/index.php/AAAI/article/view/17325) [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:VigqltkXN1QJ:scholar.google.com/&output=citation&scisdr=CgXfrbsrEPaI6B_rEX0:AAGBfm0AAAAAY4PtCX1Nw5q5QeLUSLGippUjAq9GB4dc&scisig=AAGBfm0AAAAAY4PtCStnIoFzxpsoHCwvNsGMCy_qkZUZ&scisf=4&ct=citation&cd=-1&hl=en)
+[5] Zhou, H., Zhang, S., Peng, J., Zhang, S., Li, J., Xiong, H., & Zhang, W. (2021). Informer: Beyond efficient transformer for long sequence time-series forecasting. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 12, pp. 11106-11115). [paper](https://ojs.aaai.org/index.php/AAAI/article/view/17325) [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:VigqltkXN1QJ:scholar.google.com/&output=citation&scisdr=CgXfrbsrEPaI6B_rEX0:AAGBfm0AAAAAY4PtCX1Nw5q5QeLUSLGippUjAq9GB4dc&scisig=AAGBfm0AAAAAY4PtCStnIoFzxpsoHCwvNsGMCy_qkZUZ&scisf=4&ct=citation&cd=-1&hl=en)
