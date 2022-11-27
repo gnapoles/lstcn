@@ -20,7 +20,7 @@ Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="800" />
 </p>
 
-The input gate operates with the prior knowledge matrix $W_1^{(k)} \in \mathbb{R}^{N \times N}$ with $X^{(k)} \in \mathbb{R}^{N \times N}$ and the prior bias matrix $B_1^{(k)} \in \mathbb{R}^{1 \times N}$ such that $N=(M \times L)$. Both matrices $W_1^{(k)}$ and $B_1^{(k)}$ are transferred from the previous block and remain locked during the learning phase to be performed in that STCN block. The result of the input gate is a temporal state $H^{(k)} \in \mathbb{R}^{C \times N}$ with the outcome that the block would have produced for $X^{(k)}$ if no further learning process would have been performed to obtain $Y^{(k)}$. Such an adaptation is done in the output gate where the temporal state is operated with the learnable weight matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$.
+The input gate operates with the prior knowledge matrix $W_1^{(k)} \in \mathbb{R}^{N \times N}$ with $X^{(k)} \in \mathbb{R}^{N \times N}$ and the prior bias matrix $B_1^{(k)} \in \mathbb{R}^{1 \times N}$ such that $N=(M \times L)$. Prior matrices $W_1^{(k)}$ and $B_1^{(k)}$ are transferred from the previous STCN block and remain locked during the current learning phase. The input gate outputs a temporal state $H^{(k)} \in \mathbb{R}^{C \times N}$ with the knowledge that the block would have produced for $X^{(k)}$ if no further learning would have been performed to obtain $Y^{(k)}$. Such an adaptation is done in the output gate where the temporal state is operated with the learnable weight matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$.
 
 ```math
 H^{(k)}=f\left(X^{(k)} W_1^{(k)} \oplus B_1^{(k)} \right)
@@ -30,7 +30,7 @@ H^{(k)}=f\left(X^{(k)} W_1^{(k)} \oplus B_1^{(k)} \right)
 \hat{Y}^{(k)}=f\left(H^{(k)} W_2^{(k)} \oplus B_2^{(k)} \right)
 ```
 
-where $\hat{Y}^{(k)}$ is the predicted output, while $\oplus$ performs a matrix-vector addition by operating each row of a given matrix with a vector. Similar to other gated recurrent neural networks, the learning process used by LSTCN models takes place inside each STCN block, considering the frozen weights input as prior knowledge. Given a temporal state $H^{(k)}$ resulting from the input gate and the block's expected output $Y^{(k)}$, we can compute the matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$ using the following deterministic rule:
+where $\hat{Y}^{(k)}$ denotes the predicted output, while $\oplus$ performs a matrix-vector addition by operating each row of a given matrix with a vector. Similar to other gated recurrent neural networks, the learning process takes place inside each STCN block. Given a temporal state $H^{(k)}$ and the block's expected output $Y^{(k)}$, we can compute the matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$ using the following deterministic rule:
 
 ```math
 \begin{bmatrix} 
