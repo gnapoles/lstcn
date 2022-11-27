@@ -70,7 +70,7 @@ Use walk forward cross-validation and grid search (or any suitable validation st
 tscv = TimeSeriesSplit(n_splits=5)
 scorer = make_scorer(model.score, greater_is_better=False)
 param_search = {
-    'alpha': [1.0E-3, 1.0E-2, 1.0, 1.0E-2],
+    'alpha': [1.0E-3, 1.0E-2, 1.0E-1],
     'n_blocks': range(2, 6)
 }
 
