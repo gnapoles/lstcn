@@ -14,7 +14,7 @@ pip install lstcn
 
 An LSTCN model [1] can be defined as a recurrent neural network composed of sequentially-ordered Short-term Cognitive Network (STCN) blocks [2]. Each STCN block is a two-layer neural network that uses shallow learning to fit the model to a specific time patch, which is then transfered to the following block. Time patches are temporal pieces of data resulting from partitioning the time series. 
 
-Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances, $M$ is the number of features and $L$ is the number of steps to be forecast. Each STCN block passes the knowledge learned in the previous iteration ( $W_2^{(k)}$ and $B_2^{(k)}$) to the next STCN model as prior knowledge to perform reasoning. The figure below illustrates this idea.
+Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances, $M$ is the number of features and $L$ is the number of steps to be forecast. Each STCN block passes the knowledge learned in the previous iteration ( $W_2^{(k)}$ and $B_2^{(k)}$) to the next STCN model as prior knowledge to perform reasoning.
 
 <p align="center">
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="800" />
