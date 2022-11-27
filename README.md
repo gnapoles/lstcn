@@ -59,7 +59,7 @@ Optionally, you can also specify the number of STCN blocks in the network (`n_bl
 For training a LSTCN model simply call the fit method:
 
 ```python
-model.fit(X,Y)
+model.fit(X_train,Y_train)
 ```
 
 ### Hyperparameter tuning
@@ -70,7 +70,7 @@ Use walk forward cross-validation and grid search (or any suitable validation st
 tscv = TimeSeriesSplit(n_splits=5)
 scorer = make_scorer(model.score, greater_is_better=False)
 param_search = {
-    'alpha': [1.0E-4, 1.0E-2, 1.0, 1.0E+2, 1.0E+4],
+    'alpha': [1.0E-3, 1.0E-2, 1.0, 1.0E-2],
     'n_blocks': range(2, 6)
 }
 
@@ -94,7 +94,7 @@ For example, this is the prediction for the target series `oil temperature` of t
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1400" />
 </p>
 
-The mean absolute error for the training set is 0.0355, while the test error is 0.0192. The model's hyperparameter tuning runs in 3.8599 seconds.
+The mean absolute error for the training set is 0.0355, while the test error is 0.0192. The model's hyperparameter tuning runs in 3.8599 seconds. 
 
 ## References
 
