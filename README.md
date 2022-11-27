@@ -94,6 +94,8 @@ For example, this is the prediction for the target series `oil temperature` of t
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1400" />
 </p>
 
+The mean absolute error for the training set is 0.0355, while the test error is 0.0192. The model's hyperparameter tuning runs in 3.8599 seconds.
+
 ## References
 
 If you use the LSTCN model in your research please cite the following papers:
