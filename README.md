@@ -91,7 +91,7 @@ Y_pred = best_model.predict(X_test)
 For example, this is the prediction for the target series `oil temperature` of the `ETTh1` dataset [5] containing electricity transformer temperatures in China:
 
 <p align="center">
-  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1000" />
+  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1200" />
 </p>
 
 ## References
