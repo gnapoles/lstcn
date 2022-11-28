@@ -44,7 +44,7 @@ where $\Phi^{(k)}=(H^{(k)}|A)$ such that $A_{C \times 1}$ denotes a column vecto
 
 ## Example Usage
 
-The syntax for the usage of LSTCN is similar to the one of scikit-learn library.
+The syntax for the usage of LSTCN is compatible with scikit-learn library.
 
 ### Training
 
