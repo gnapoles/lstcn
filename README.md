@@ -14,7 +14,7 @@ pip install lstcn
 
 An LSTCN model [1] can be defined as a recurrent neural network composed of sequentially-ordered Short-term Cognitive Network (STCN) blocks [2]. Each STCN block is a two-layer neural network that uses shallow learning to fit the model to a specific time patch, which is then transfered to the following block. Time patches are temporal pieces of data resulting from partitioning the time series. 
 
-Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances, $M$ is the number of features and $L$ is the number of steps to be forecast. Each STCN block passes the knowledge learned in the previous iteration ( $W_2^{(k)}$ and $B_2^{(k)}$) to the next STCN model as prior knowledge to perform reasoning.
+Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances, $M$ is the number of features and $L$ is the number of steps to be forecast. Each STCN block passes the knowledge learned in the previous iteration $(W_2^{(k)}$ and $B_2^{(k)})$ to the next STCN model as prior knowledge to perform reasoning.
 
 <p align="center">
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="800" />
@@ -64,13 +64,13 @@ model.fit(X_train,Y_train)
 
 ### Hyperparameter tuning
 
-Use walk forward cross-validation and grid search (or any suitable validation strategy from scikit-learn) for selecting the best model:
+Use walk forward cross-validation and grid search (or any other suitable validation strategy from scikit-learn) for selecting the best-performing model:
 
 ```python
 tscv = TimeSeriesSplit(n_splits=5)
 scorer = make_scorer(model.score, greater_is_better=False)
 param_search = {
-    'alpha': [1.0E-3, 1.0E-2, 1.0, 1.0E-2],
+    'alpha': [1.0E-3, 1.0E-2, 1.0E-1],
     'n_blocks': range(2, 6)
 }
 
@@ -94,9 +94,9 @@ For example, this is the prediction for the target series `oil temperature` of t
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1400" />
 </p>
 
-In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. The model's hyperparameter tuning runs in 3.8599 seconds.
+In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. More importantly, the model's hyperparameter tuning (exploring 15 models) runs in 3.8599 seconds!
 
-A jupyter notebook with all details on data preparation and execution for this example is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
+A jupyter notebook with all details is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
 
 ## References
 
