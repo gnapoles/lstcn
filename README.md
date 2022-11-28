@@ -94,7 +94,7 @@ For example, this is the prediction for the target series `oil temperature` of t
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1400" />
 </p>
 
-In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. More importantly, the model's hyperparameter tuning runs in 3.8599 seconds!
+In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. More importantly, the model's hyperparameter tuning (exploring 15 models) runs in 3.8599 seconds!
 
 A jupyter notebook with all details is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
 
