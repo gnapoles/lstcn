@@ -88,7 +88,7 @@ For predicting new data use the method predict:
 Y_pred = best_model.predict(X_test)
 ```
 
-For example, this is the prediction for the target series `oil temperature` of the `ETTh1` dataset [5] containing 17420 records of electricity transformer temperatures in China:
+The figure below shows the predictions on the test set for the target series `oil temperature` of the `ETTh1` dataset [5] containing 17420 records of electricity transformer temperatures in China:
 
 <p align="center">
   <img src="https://github.com/gnapoles/lstcn/blob/main/figures/example_pred.png?raw=true" width="1400" />
@@ -96,7 +96,7 @@ For example, this is the prediction for the target series `oil temperature` of t
 
 In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. More importantly, the model's hyperparameter tuning (exploring 15 models) runs in 3.8599 seconds!
 
-A jupyter notebook with all details is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
+A jupyter notebook with detailed steps is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
 
 ## References
 
