@@ -96,8 +96,6 @@ The figure below shows the predictions on the test set for the target series `oi
 
 In this example, we used 80% of the dataset for training and validation, and 20% for testing. The mean absolute error for the training set is 0.0355, while the test error is 0.0192. More importantly, the model's hyperparameter tuning (exploring 15 models) runs in 3.8599 seconds!
 
-A jupyter notebook with detailed steps is available in the [examples](https://github.com/gnapoles/lstcn/blob/main/examples) folder.
-
 ## References
 
 If you use the LSTCN model in your research please cite the following papers:
