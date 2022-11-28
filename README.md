@@ -64,7 +64,7 @@ model.fit(X_train,Y_train)
 
 ### Hyperparameter tuning
 
-Use walk forward cross-validation and grid search (or any suitable validation strategy from scikit-learn) for selecting the best-performing model:
+Use walk forward cross-validation and grid search (or any other suitable validation strategy from scikit-learn) for selecting the best-performing model:
 
 ```python
 tscv = TimeSeriesSplit(n_splits=5)
