@@ -17,7 +17,7 @@ An LSTCN model [1] can be defined as a recurrent neural network composed of sequ
 Let us assume that $X \in \mathbb{R}^{M \times T}$ is a multivariate time series. The $k$-th time patch is denoted by the tuple $(X^{(k)}, Y^{(k)})$ where $X^{(k)}, Y^{(k)} \in \mathbb{R}^{C \times (M \times L)}$ where $C$ is the number of instances, $M$ is the number of features and $L$ is the number of steps to be forecast. Each STCN block passes the knowledge learned in the previous iteration $(W_2^{(k)}$ and $B_2^{(k)})$ to the next STCN model as prior knowledge to perform reasoning.
 
 <p align="center">
-  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="800" />
+  <img src="https://github.com/gnapoles/lstcn/blob/main/figures/LSTCN_diagram.jpg?raw=true" width="700" />
 </p>
 
 The input gate operates with the prior knowledge matrix $W_1^{(k)} \in \mathbb{R}^{N \times N}$ with $X^{(k)} \in \mathbb{R}^{N \times N}$ and the prior bias matrix $B_1^{(k)} \in \mathbb{R}^{1 \times N}$ such that $N=(M \times L)$. Prior matrices $W_1^{(k)}$ and $B_1^{(k)}$ are transferred from the previous STCN block and remain locked during the current learning phase. The input gate outputs a temporal state $H^{(k)} \in \mathbb{R}^{C \times N}$ with the knowledge that the block would have produced for $X^{(k)}$ if no further learning would have been performed to obtain $Y^{(k)}$. Such an adaptation is done in the output gate where the temporal state is operated with the learnable weight matrices $W_2^{(k)} \in \mathbb{R}^{N \times N}$ and $B_2^{(k)} \in \mathbb{R}^{1 \times N}$.
